@@ -149,17 +149,15 @@
       let board = this.rows();
       let counter = 0;
       var col = majorDiagonalColumnIndexAtFirstRow;
-      let firstRow = this._getFirstRowColumnIndexForMajorDiagonalOn(row, col);
 
       for (var i = row; i < board.length; i++) {
-        for (var j = col; j < board.length; j++) {
-          if (board[i][j] === 1 && this._getFirstRowColumnIndexForMajorDiagonalOn(i, j) === firstRow) {
-            counter++;
-            if (counter > 1) {
-              return true;
-            }
+        if (board[i][col] === 1) {
+          counter++;
+          if (counter > 1) {
+            return true;
           }
         }
+        col++;
       }
       return false; // fixme
     },
@@ -191,17 +189,15 @@
       let board = this.rows();
       let counter = 0;
       let col = minorDiagonalColumnIndexAtFirstRow;
-      let firstRow = this._getFirstRowColumnIndexForMinorDiagonalOn(row, col);
 
       for (var i = row; i < board.length; i++) {
-        for (var j = col; j >= 0; j--) {
-          if (board[i][j] === 1 && this._getFirstRowColumnIndexForMinorDiagonalOn(i, j) === firstRow) {
-            counter++;
-            if (counter > 1) {
-              return true;
-            }
+        if (board[i][col] === 1) {
+          counter++;
+          if (counter > 1) {
+            return true;
           }
         }
+        col--;
       }
       return false;
     },
